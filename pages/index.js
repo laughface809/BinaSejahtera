@@ -2,11 +2,10 @@ import Head from 'next/head'
 import Link from "next/link";
 import styles from '../styles/Home.module.css'
 
-import products from '../bs-products.json'
-import { fromImageToUrl} from "../utils/urls";
+import { fromImageToUrl, API_URL} from "../utils/urls";
 import {twoDecimals} from "../utils/format";
 
-export default function Home() {
+export default function Home({products}) {
   return (
     <div>
       <Head>
@@ -22,7 +21,7 @@ export default function Home() {
                                 <img src={ fromImageToUrl(product.image)}/>
                             </div>
                             <div className={styles.product__Col}>
-                                {product.name} IDR {} {product.price}
+                                {product.name} IDR {twoDecimals(product.price)}
                             </div>
                         </div>
                     </a>
@@ -31,4 +30,16 @@ export default function Home() {
         ))}
     </div>
   )
+}
+export async function getStaticProps(){
+    //Fetch data products
+    const product_res = await fetch(`${API_URL}/bs-products/`)
+    const products = await product_res.json()
+
+    //Return ke products sebagai props
+    return{
+        props:{
+            products
+        }
+    }
 }
