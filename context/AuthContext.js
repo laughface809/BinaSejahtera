@@ -36,13 +36,27 @@ export const AuthProvider = (props) => {
             router.push('/')
         }
         catch (err){
-            
+
+        }
+    }
+
+    const checkUserLoggedIn = async () =>{
+        try {
+            const isLoggedIn = await magic.user.isLoggedIn()
+            if(isLoggedIn){
+                const {email} = await magic.user.getMetadata()
+                setUser({email})
+            }
+        }
+        catch (err){
+
         }
     }
 
     useEffect(() => {
         magic = new Magic(MAGIC_PUBLIC_KEY)
-        }
+        checkUserLoggedIn()
+        }, []
     )
 
     return(
