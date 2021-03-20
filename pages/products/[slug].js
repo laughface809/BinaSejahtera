@@ -2,6 +2,7 @@ import Head from "next/head";
 
 import {fromImageToUrl, API_URL} from "../../utils/urls";
 import {twoDecimals} from "../../utils/format";
+import BuyButton from "../../components/BuyButton";
 
 const Product = ({product}) => {
     return (
@@ -19,7 +20,7 @@ const Product = ({product}) => {
             <h3>{product.name}</h3>
             <img src={fromImageToUrl(product.image)}/>
             <h3>{product.name}</h3>
-            <p>IDR {twoDecimals(product.price)}</p>
+            <p>IDR {twoDecimals(product.price)} <BuyButton product={product}/>  </p>
 
             <p>
                 {product.content}
@@ -29,7 +30,7 @@ const Product = ({product}) => {
 }
 
 export async function getStaticProps({params:{slug}}){
-    const product_res = await fetch(`${API_URL}/bs-products/?slug=${slug}`)
+    const product_res = await fetch(`${API_URL}/binasejahteras/?slug=${slug}`)
     const found = await product_res.json()
 
     return{
@@ -41,7 +42,7 @@ export async function getStaticProps({params:{slug}}){
 
 export async function getStaticPaths(){
     //Retrieve all the posible paths
-    const products_res = await fetch(`${API_URL}/bs-products/`)
+    const products_res = await fetch(`${API_URL}/binasejahteras/`)
     const products = await products_res.json()
 
     //Return ke NextJS context

@@ -33,7 +33,7 @@ export default function Home({products}) {
 }
 export async function getStaticProps(){
     //Fetch data products
-    const product_res = await fetch(`${API_URL}/bs-products/`)
+    const product_res = await fetch(`${API_URL}/binasejahteras/`)
     const products = await product_res.json()
 
     //Return ke products sebagai props

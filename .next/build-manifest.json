@@ -29,10 +29,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/account.js"
     ],
-    "/login": [
+    "/success": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/login.js"
+      "static/chunks/pages/success.js"
     ]
   },
   "ampFirstPages": []

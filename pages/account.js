@@ -61,7 +61,7 @@ export default function Account(){
             {loading && <p>Loading your orders</p>}
             {orders.map(order=>(
                 <div key={order.id}>
-                    {new Date(order.createdAt).toLocaleDateString('en-MY')} {order.bs_product.name} ${order.total} {order.status}
+                    {new Date(order.createdAt).toLocaleDateString('en-MY')} {order.binasejahtera.name} ${order.total} {order.status}
                 </div>
             ))}
             <hr/>
