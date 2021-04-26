@@ -6,10 +6,6 @@
 2. npm run build
 3. npm run dev
 
-BACKEND STRAPI
-
-FRONTEND NUXT
-
 LOGIN MAGIC
 
 PAYMENT GATEWAY STRIPE
